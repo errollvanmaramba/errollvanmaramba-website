@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { getSiteSettings } from '../lib/content';
+import { withBase } from '../lib/paths';
+
+const site = await getSiteSettings();
+---
+<BaseLayout
+  title="Contact"
+  description="Get in touch with Erroll Van Maramba for full-time roles, freelance work, or creative collaboration."
+  canonicalPath={withBase('/contact/')}
+>
+  <section class="section">
+    <div class="shell contact-grid">
+      <div>
+        <SectionHeading
+          eyebrow="Contact"
+          title="Let’s talk about the work"
+          lede="Use the form for hiring conversations, freelance projects, or collaboration. Direct email and profile links are below as well."
+        />
+        <div class="contact-links">
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href={site.behance} target="_blank" rel="noreferrer">Behance</a>
+          <a href={withBase(site.resumePath)}>Download resume</a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

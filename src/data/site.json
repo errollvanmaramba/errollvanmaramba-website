@@ -1,0 +1,31 @@
+{
+  "name": "Erroll Van Maramba",
+  "headline": "Marketing Designer for eCommerce Brands",
+  "subheadline": "I help Shopify stores, agencies, and growth teams create campaign-ready design, product visuals, SEO-supportive content, and brand systems that move faster and look sharper.",
+  "shortBio": "Based in Metro Manila and working remotely with US eCommerce brands, agencies, startups, DTC teams, and Shopify stores.",
+  "availability": "Open to full-time roles and select freelance collaborations.",
+  "location": "Metro Manila, Philippines",
+  "email": "erroll.maramba18@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/errollvanmaramba/",
+  "behance": "https://www.behance.net/errollvanmaramba",
+  "resumePath": "/resume/Erroll_Van_Maramba_CV_2026.pdf",
+  "formAction": "https://formspree.io/f/your-form-id",
+  "heroMetrics": [
+    {
+      "value": "Multi-brand",
+      "label": "Creative support across Outova, Starfire, and Lake Blue workstreams"
+    },
+    {
+      "value": "Shopify",
+      "label": "Product media, uploads, merchandising support, and backend coordination"
+    },
+    {
+      "value": "2\u20135%",
+      "label": "MoM organic traffic growth supported in Starfire's SEO/SEM program"
+    }
+  ],
+  "seo": {
+    "title": "Erroll Van Maramba | Marketing Designer for eCommerce Brands",
+    "description": "Marketing designer focused on eCommerce creative, Shopify execution, SEO-aware content support, brand systems, and campaign-ready visual production."
+  }
+}

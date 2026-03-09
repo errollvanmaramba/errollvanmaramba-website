@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { getExperience } from '../lib/content';
+import { withBase } from '../lib/paths';
+
+const experience = getExperience();
+---
+<BaseLayout
+  title="Experience"
+  description="Recent roles across Outova, Lake Blue Media, Starfire Direct, and freelance design work."
+  canonicalPath={withBase('/experience/')}
+>
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Experience"
+        title="Recent roles"
+        lede="A track record shaped by eCommerce creative, Shopify support, content production, and campaign execution."
+      />
+      <div class="experience-stack">
+        {experience.map((item) => (
+          <article class="experience-card">
+            <div class="timeline-topline">
+              <span>{item.company}</span>
+              <span>{item.period}</span>
+            </div>
+            <h2>{item.role}</h2>
+            <p class="experience-location">{item.location}</p>
+            <p>{item.summary}</p>
+
+            <ul class="list-clean">
+              {item.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+
+            <div class="chip-cloud">
+              {item.tools.map((tool) => (
+                <span class="chip">{tool}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

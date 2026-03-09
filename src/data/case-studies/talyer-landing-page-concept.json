@@ -1,0 +1,46 @@
+{
+  "slug": "talyer-landing-page-concept",
+  "title": "Talyer+ Landing Page Concept",
+  "eyebrow": "Selected archive project",
+  "client": "Talyer+",
+  "role": "Designer",
+  "period": "2023",
+  "featured": false,
+  "year": 2023,
+  "order": 6,
+  "category": "Landing page concept",
+  "summary": "A landing-page concept for a car service booking app focused on structure, clarity, and product introduction.",
+  "cover": "/work/talyer.svg",
+  "externalUrl": "https://www.behance.net/gallery/169199077/Landing-Page-Talyer-%28Car-Service-Booking-App%29",
+  "tags": [
+    "Figma",
+    "Landing page",
+    "Product intro"
+  ],
+  "metrics": [
+    {
+      "value": "Behance",
+      "label": "Published April 26, 2023"
+    },
+    {
+      "value": "Tools",
+      "label": "Figma tag shown on Behance"
+    }
+  ],
+  "challenge": "Communicate a service-booking product quickly through a single landing page.",
+  "approach": [
+    "Organized the page around a clear product narrative and visual scanning path.",
+    "Used a clean layout language aimed at presentation and usability."
+  ],
+  "results": [
+    "Useful as a supporting project that shows page composition skills and conversion-oriented framing."
+  ],
+  "sections": [
+    {
+      "heading": "Portfolio role",
+      "paragraphs": [
+        "This project remains in the archive section because it supports the broader story without competing with the more commercially relevant work from recent roles."
+      ]
+    }
+  ]
+}

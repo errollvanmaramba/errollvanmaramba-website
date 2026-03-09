@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCaseStudies } from '../../lib/content';
+import { withBase } from '../../lib/paths';
+
+export function getStaticPaths() {
+  return getCaseStudies().map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+---
+<BaseLayout
+  title={entry.title}
+  description={entry.summary}
+  image={entry.cover}
+  canonicalPath={withBase(`/work/${entry.slug}/`)}
+>
+  <section class="section case-study-hero">
+    <div class="shell case-study-grid">
+      <div>
+        <p class="eyebrow">{entry.eyebrow}</p>
+        <h1>{entry.title}</h1>
+        <p class="hero-lede">{entry.summary}</p>
+
+        <div class="meta-grid">
+          <div>
+            <span class="meta-label">Client</span>
+            <strong>{entry.client}</strong>
+          </div>
+          <div>
+            <span class="meta-label">Role</span>
+            <strong>{entry.role}</strong>
+          </div>
+          <div>
+            <span class="meta-label">Period</span>
+            <strong>{entry.period}</strong>
+          </div>
+          <div>
+            <span class="meta-label">Category</span>
+            <strong>{entry.category}</strong>
+          </div>
+        </div>
+
+        <ul class="tag-list" aria-label={`${entry.title} tags`}>
+          {entry.tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+
+        {entry.externalUrl && (
+          <div class="button-row">
+            <a class="button button-secondary" href={entry.externalUrl} target="_blank" rel="noreferrer">
+              View original Behance project
+            </a>
+          </div>
+        )}
+      </div>
+
+      <div class="case-study-cover-card">
+        <img src={withBase(entry.cover)} alt={`${entry.title} cover artwork`} width="1200" height="720" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell case-body-grid">
+      <div class="case-main">
+        <article class="case-block">
+          <h2>The challenge</h2>
+          <p>{entry.challenge}</p>
+        </article>
+
+        <article class="case-block">
+          <h2>Approach</h2>
+          <ul class="list-clean">
+            {entry.approach.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+
+        {entry.sections.map((section) => (
+          <article class="case-block">
+            <h2>{section.heading}</h2>
+            {section.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </article>
+        ))}
+
+        <article class="case-block">
+          <h2>Results and signals</h2>
+          <ul class="list-clean">
+            {entry.results.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+
+      <aside class="case-sidebar">
+        <div class="sidebar-card">
+          <h3>Key signals</h3>
+          <dl class="metric-list">
+            {entry.metrics.map((metric) => (
+              <div>
+                <dt>{metric.value}</dt>
+                <dd>{metric.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Next step</h3>
+          <p>If this looks like the kind of support your team needs, get in touch.</p>
+          <a class="button button-primary" href={withBase('/contact/')}>Contact me</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

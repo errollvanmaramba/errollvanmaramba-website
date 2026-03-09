@@ -1,0 +1,37 @@
+---
+import type { CaseStudy } from '../lib/types';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  item: CaseStudy;
+}
+
+const { item } = Astro.props;
+---
+<article class="work-card">
+  <a href={withBase(`/work/${item.slug}/`)} class="work-card-link">
+    <img
+      src={withBase(item.cover)}
+      alt={`${item.title} cover`}
+      class="work-card-cover"
+      loading="lazy"
+      width="1200"
+      height="720"
+    />
+    <div class="work-card-body">
+      <div class="work-card-topline">
+        <span>{item.client}</span>
+        <span>{item.year}</span>
+      </div>
+
+      <h3>{item.title}</h3>
+      <p>{item.summary}</p>
+
+      <ul class="tag-list" aria-label={`${item.title} tags`}>
+        {item.tags.slice(0, 3).map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    </div>
+  </a>
+</article>

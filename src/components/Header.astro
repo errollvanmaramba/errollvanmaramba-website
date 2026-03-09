@@ -1,0 +1,43 @@
+---
+import { withBase } from '../lib/paths';
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const nav: NavItem[] = [
+  { label: 'Home', href: withBase('/') },
+  { label: 'Work', href: withBase('/work/') },
+  { label: 'About', href: withBase('/about/') },
+  { label: 'Experience', href: withBase('/experience/') },
+  { label: 'Contact', href: withBase('/contact/') }
+];
+
+const currentPath = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href={withBase('/')}>
+      <span class="brand-mark">EVM</span>
+      <span class="brand-copy">
+        <strong>Erroll Van Maramba</strong>
+        <span>Marketing Designer</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'nav-link',
+            currentPath === item.href || (item.href !== withBase('/') && currentPath.startsWith(item.href)) ? 'is-active' : ''
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

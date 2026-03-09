@@ -1,0 +1,17 @@
+{
+  "slug": "freelance",
+  "company": "Freelance",
+  "role": "Graphic Designer",
+  "period": "Apr 2021 \u2013 Jul 2023",
+  "location": "Quezon City, Philippines",
+  "order": 4,
+  "summary": "Handled visual identity, print, and campaign creative for client work.",
+  "bullets": [
+    "Designed logos, print collateral, and social media ads.",
+    "Executed end-to-end creative work in Illustrator and Photoshop."
+  ],
+  "tools": [
+    "Illustrator",
+    "Photoshop"
+  ]
+}

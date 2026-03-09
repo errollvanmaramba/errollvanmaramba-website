@@ -1,0 +1,47 @@
+{
+  "slug": "isuzu-website-redesign-concept",
+  "title": "ISUZU Website Redesign Concept",
+  "eyebrow": "Selected archive project",
+  "client": "ISUZU",
+  "role": "Designer",
+  "period": "2023",
+  "featured": false,
+  "year": 2023,
+  "order": 5,
+  "category": "Website redesign concept",
+  "summary": "A landing-page redesign concept for an automotive brand, exploring a cleaner, more modern presentation layer.",
+  "cover": "/work/isuzu.svg",
+  "externalUrl": "https://www.behance.net/gallery/169404823/Re-Design-Web-Site-ISUZU-Web-Page",
+  "tags": [
+    "Figma",
+    "Landing page",
+    "Automotive",
+    "UI concept"
+  ],
+  "metrics": [
+    {
+      "value": "Behance",
+      "label": "Published April 28, 2023"
+    },
+    {
+      "value": "Tools",
+      "label": "Figma tag shown on Behance"
+    }
+  ],
+  "challenge": "Reframe a corporate automotive website with stronger visual hierarchy and a more current interface direction.",
+  "approach": [
+    "Used a more refined landing-page layout and stronger headline hierarchy.",
+    "Focused on presenting the concept as a cleaner and more premium web experience."
+  ],
+  "results": [
+    "Adds interface range to the portfolio while keeping the current positioning focused on marketing design rather than pure UX/UI."
+  ],
+  "sections": [
+    {
+      "heading": "How it fits the new brand",
+      "paragraphs": [
+        "This project is included as supporting proof of interface sensitivity, not as the main identity. It helps show that Erroll can handle digital layout systems, but the primary positioning of the site remains eCommerce marketing design."
+      ]
+    }
+  ]
+}

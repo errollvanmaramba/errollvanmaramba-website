@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import WorkCard from '../components/WorkCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import { getExperience, getFaqs, getFeaturedCaseStudies, getFeaturedTestimonial, getServices, getSiteSettings } from '../lib/content';
+import { withBase } from '../lib/paths';
+import headshot from '../assets/erroll-headshot.jpg';
+
+const site = await getSiteSettings();
+const featuredWork = getFeaturedCaseStudies();
+const services = getServices();
+const experience = getExperience().slice(0, 3);
+const faqs = getFaqs();
+const testimonial = getFeaturedTestimonial();
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: 'Marketing Designer',
+  email: site.email,
+  url: new URL(withBase('/'), Astro.site).toString(),
+  sameAs: [site.linkedin, site.behance],
+  image: new URL(headshot.src, Astro.site).toString()
+};
+---
+<BaseLayout
+  description={site.seo.description}
+  canonicalPath={withBase('/')}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  </Fragment>
+
+  <section class="hero section">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Modern, polished, eCommerce-focused</p>
+        <h1>{site.headline}</h1>
+        <p class="hero-lede">{site.subheadline}</p>
+        <p class="hero-meta">{site.shortBio} {site.availability}</p>
+
+        <div class="button-row">
+          <a class="button button-primary" href={withBase('/contact/')}>Contact me</a>
+          <a class="button button-secondary" href={withBase('/work/')}>View selected work</a>
+        </div>
+
+        <dl class="hero-metrics">
+          {site.heroMetrics.map((metric) => (
+            <div>
+              <dt>{metric.value}</dt>
+              <dd>{metric.label}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="hero-portrait-wrap">
+        <div class="portrait-frame">
+          <img
+            src={headshot.src}
+            alt="Studio headshot of Erroll Van Maramba"
+            width={1200}
+            height={800}
+            class="hero-portrait"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="What I help with"
+        title="Creative work that actually fits eCommerce operations"
+        lede="The strongest fit is with Shopify brands, agencies, and growth teams that need design paired with execution."
+      />
+      <div class="card-grid card-grid-4">
+        {services.map((service) => (
+          <article class="info-card">
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+            <ul class="list-clean">
+              {service.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Selected work"
+        title="Work built for real marketing pressure"
+        lede="Recent case studies focus on multi-brand eCommerce creative, Shopify support, SEO-aware production, and campaign execution."
+      />
+      <div class="work-grid">
+        {featuredWork.map((item) => (
+          <WorkCard item={item} />
+        ))}
+      </div>
+      <div class="section-cta">
+        <a class="button button-secondary" href={withBase('/work/')}>See all work</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Experience snapshot"
+        title="Recent roles"
+        lede="A blend of product-media design, Shopify execution, content support, and growth-oriented creative."
+      />
+      <div class="timeline-list">
+        {experience.map((item) => (
+          <article class="timeline-card">
+            <div class="timeline-topline">
+              <span>{item.company}</span>
+              <span>{item.period}</span>
+            </div>
+            <h3>{item.role}</h3>
+            <p>{item.summary}</p>
+          </article>
+        ))}
+      </div>
+      <div class="section-cta">
+        <a class="button button-secondary" href={withBase('/experience/')}>View full experience</a>
+      </div>
+    </div>
+  </section>
+
+  {testimonial && (
+    <section class="section">
+      <div class="shell">
+        <SectionHeading
+          eyebrow="Recommendation"
+          title="What a former manager said"
+          lede="A signal of both creative strength and day-to-day reliability."
+        />
+        <TestimonialCard item={testimonial} compact={true} />
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="FAQ"
+        title="A few quick answers"
+        lede="The site is positioned for both hiring conversations and freelance inquiries."
+      />
+      <div class="faq-grid">
+        {faqs.map((item) => (
+          <details class="faq-card">
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-closing">
+    <div class="shell callout">
+      <div>
+        <p class="eyebrow">Ready to work together?</p>
+        <h2>Need a marketing designer who can think beyond visuals?</h2>
+        <p>
+          Let’s talk about full-time roles, freelance projects, or creative collaboration for your brand.
+        </p>
+      </div>
+      <div class="button-row">
+        <a class="button button-primary" href={withBase('/contact/')}>Start a conversation</a>
+        <a class="button button-secondary" href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

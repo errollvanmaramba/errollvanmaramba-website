@@ -1,0 +1,46 @@
+{
+  "slug": "northwind-newsletter-design",
+  "title": "Northwind Newsletter Design",
+  "eyebrow": "Selected archive project",
+  "client": "Northwind",
+  "role": "Designer",
+  "period": "2023",
+  "featured": false,
+  "year": 2023,
+  "order": 7,
+  "category": "Email design",
+  "summary": "An email newsletter design project that supports the case for campaign-ready marketing execution.",
+  "cover": "/work/northwind.svg",
+  "externalUrl": "https://www.behance.net/gallery/161825061/Northwind-Newsletter",
+  "tags": [
+    "Email",
+    "Newsletter",
+    "Campaign creative"
+  ],
+  "metrics": [
+    {
+      "value": "Behance",
+      "label": "Published January 21, 2023"
+    },
+    {
+      "value": "Tools",
+      "label": "Photoshop tag shown on Behance"
+    }
+  ],
+  "challenge": "Create a clear, branded newsletter layout that supports scannability and campaign communication.",
+  "approach": [
+    "Focused on hierarchy, spacing, and modular content presentation.",
+    "Framed the piece as a campaign-support asset rather than only a visual exercise."
+  ],
+  "results": [
+    "Reinforces Erroll\u2019s fit for lifecycle marketing and campaign asset production."
+  ],
+  "sections": [
+    {
+      "heading": "Why it belongs here",
+      "paragraphs": [
+        "Even though it is an older archive piece, this project directly supports the positioning around marketing design because email production is still a core deliverable for many growth teams."
+      ]
+    }
+  ]
+}

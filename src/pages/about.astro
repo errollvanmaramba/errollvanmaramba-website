@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { getSiteSettings } from '../lib/content';
+import { withBase } from '../lib/paths';
+import headshot from '../assets/erroll-headshot.jpg';
+
+const site = await getSiteSettings();
+---
+<BaseLayout
+  title="About"
+  description="Learn more about Erroll Van Maramba, a marketing designer focused on eCommerce creative, Shopify support, and brand systems."
+  canonicalPath={withBase('/about/')}
+>
+  <section class="section">
+    <div class="shell about-grid">
+      <div class="portrait-frame portrait-frame-small">
+        <img
+          src={headshot.src}
+          alt="Portrait of Erroll Van Maramba"
+          width={1200}
+          height={800}
+          class="hero-portrait"
+        />
+      </div>
+
+      <div>
+        <SectionHeading
+          eyebrow="About"
+          title="A marketing designer shaped by real eCommerce workflows"
+          lede="The focus is not only making things look better. It is making creative clearer, more usable, and more dependable for growth teams."
+        />
+        <div class="prose">
+          <p>
+            Erroll Van Maramba is a marketing designer based in Metro Manila who works with eCommerce brands, agencies,
+            startups, and Shopify teams. His recent experience blends campaign design, product media, content support,
+            short-form motion, and platform-aware execution.
+          </p>
+          <p>
+            That means the work is rarely just a mockup. It often includes production detail that matters in practice:
+            product image cleanup, Shopify uploads, SEO-aware asset naming, alt text, campaign adaptation, social
+            deliverables, and visual consistency across multiple channels.
+          </p>
+          <p>
+            Earlier work and training included UX/UI-oriented projects, and that background still shows up in page
+            structure and layout sensitivity. But the current positioning is intentionally more commercial: marketing
+            design for teams that need creative output tied to real brand and growth operations.
+          </p>
+        </div>
+
+        <div class="button-row">
+          <a class="button button-primary" href={withBase('/contact/')}>Contact me</a>
+          <a class="button button-secondary" href={site.behance} target="_blank" rel="noreferrer">Browse Behance</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Tool stack"
+        title="Tools used across design, motion, AI, and platform support"
+      />
+      <div class="chip-cloud">
+        {[
+          'Photoshop',
+          'Illustrator',
+          'Canva',
+          'Shopify',
+          'CapCut',
+          'HeyGen',
+          'ChatGPT',
+          'Claude',
+          'Midjourney',
+          'Gemini',
+          'Google AI Labs',
+          'Dropbox',
+          'SharePoint'
+        ].map((item) => (
+          <span class="chip">{item}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

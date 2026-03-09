@@ -1,0 +1,12 @@
+{
+  "slug": "shopify-support",
+  "title": "Shopify support beyond design",
+  "description": "Creative that works inside the platform, not just in mockups.",
+  "bullets": [
+    "Uploads and asset management",
+    "SEO-aware file naming and alt text",
+    "Backend coordination with marketing teams",
+    "Website update support"
+  ],
+  "order": 3
+}

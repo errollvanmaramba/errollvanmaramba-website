@@ -1,0 +1,44 @@
+---
+import { getSiteSettings } from '../lib/content';
+
+const site = await getSiteSettings();
+---
+<form class="contact-form" action={site.formAction} method="POST">
+  <div class="field-grid">
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" autocomplete="name" required />
+    </label>
+
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" autocomplete="email" required />
+    </label>
+  </div>
+
+  <div class="field-grid">
+    <label>
+      <span>Company</span>
+      <input type="text" name="company" autocomplete="organization" />
+    </label>
+
+    <label>
+      <span>Project type</span>
+      <select name="projectType">
+        <option value="Full-time opportunity">Full-time opportunity</option>
+        <option value="Freelance project">Freelance project</option>
+        <option value="Collaboration">Collaboration</option>
+        <option value="General inquiry">General inquiry</option>
+      </select>
+    </label>
+  </div>
+
+  <label>
+    <span>Message</span>
+    <textarea name="message" rows="7" required></textarea>
+  </label>
+
+  <input type="hidden" name="_subject" value="New message from errollvanmaramba.github.io" />
+
+  <button type="submit" class="button button-primary">Send message</button>
+</form>

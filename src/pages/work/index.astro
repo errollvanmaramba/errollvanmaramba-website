@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import { getCaseStudies } from '../../lib/content';
+import { withBase } from '../../lib/paths';
+
+const caseStudies = getCaseStudies();
+---
+<BaseLayout
+  title="Selected Work"
+  description="A curated set of eCommerce-focused case studies, Shopify support work, content production, and supporting archive projects."
+  canonicalPath={withBase('/work/')}
+>
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="All work"
+        title="A curated mix of recent commercial work and archive projects"
+        lede="Featured case studies lead with the work most relevant to eCommerce brands, agencies, startups, and Shopify teams."
+      />
+      <div class="work-grid">
+        {caseStudies.map((item) => (
+          <WorkCard item={item} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

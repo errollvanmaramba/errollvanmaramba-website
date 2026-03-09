@@ -1,0 +1,20 @@
+---
+import type { Testimonial } from '../lib/types';
+
+interface Props {
+  item: Testimonial;
+  compact?: boolean;
+}
+
+const { item, compact = false } = Astro.props;
+---
+<figure class:list={['testimonial-card', compact ? 'is-compact' : '']}>
+  <blockquote>
+    “{compact ? item.shortQuote : item.quote}”
+  </blockquote>
+  <figcaption>
+    <strong>{item.author}</strong>
+    <span>{item.title}</span>
+    <span>{item.company}</span>
+  </figcaption>
+</figure>
