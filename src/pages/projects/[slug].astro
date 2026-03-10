@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageShell from "../../components/layout/PageShell.astro";
+import SectionShell from "../../components/layout/SectionShell.astro";
+import Button from "../../components/ui/Button.astro";
+import { allProjects } from "../../lib/content";
+
+export const getStaticPaths = () =>
+  allProjects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+
+const { project } = Astro.props;
+---
+<BaseLayout title={`${project.title} — Erroll Van Maramba`} description={project.summary}>
+  <PageShell eyebrow="Case Study" title={project.title} summary={project.summary} />
+
+  <SectionShell
+    eyebrow="Overview"
+    title="A first-pass internal case page that already adds more authority than an outbound portfolio-only link."
+    copy="Phase 2 can add richer visuals, filtering logic, larger imagery, and more refined motion while preserving this case structure."
+  >
+    <div class="card-grid cols-2">
+      <article class="card stack-md">
+        <span class="eyebrow">Problem</span>
+        <p>{project.problem}</p>
+      </article>
+
+      <article class="card stack-md">
+        <span class="eyebrow">Thought Process</span>
+        <p>{project.thoughtProcess}</p>
+      </article>
+
+      <article class="card stack-md">
+        <span class="eyebrow">Solution</span>
+        <p>{project.solution}</p>
+      </article>
+
+      <article class="card stack-md">
+        <span class="eyebrow">Metadata</span>
+        <ul role="list" class="service-list">
+          <li><strong>Category</strong>{project.category}</li>
+          <li><strong>Year</strong>{project.year}</li>
+          <li><strong>Client Type</strong>{project.clientType}</li>
+        </ul>
+      </article>
+    </div>
+
+    <div style="height: var(--space-xl);"></div>
+
+    <div class="cluster">
+      <Button href={project.behanceUrl} target="_blank" rel="noreferrer">View on Behance</Button>
+      <Button href="/contact" variant="secondary">Discuss a similar project</Button>
+    </div>
+  </SectionShell>
+</BaseLayout>

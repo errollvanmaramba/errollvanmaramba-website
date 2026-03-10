@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageShell from "../components/layout/PageShell.astro";
+import SectionShell from "../components/layout/SectionShell.astro";
+import { siteConfig } from "../content/site";
+---
+<BaseLayout title="About — Erroll Van Maramba" description="About Erroll Van Maramba and his approach to creative marketing design for eCommerce brands.">
+  <PageShell
+    eyebrow="About"
+    title="Professional profile with a modern, corporate, and artistic perspective."
+    summary="This page introduces Erroll’s working style, visual discipline, and eCommerce-centered design focus in a more personal but still structured format."
+  />
+
+  <SectionShell
+    eyebrow="Profile"
+    title="Creative support designed for brands that need polish, clarity, and consistency."
+    copy="Phase 1 keeps this page intentionally focused so the information architecture is solid before more refined long-form copy and animations are added."
+  >
+    <div class="grid-2">
+      <div class="card stack-lg">
+        <p>
+          I’m Erroll Van Maramba, a creative marketing designer focused on helping eCommerce brands
+          look sharper, communicate clearly, and convert with more confidence.
+        </p>
+        <p class="text-muted">
+          My work spans campaign visuals, Shopify content support, social design, product media,
+          and digital assets shaped for modern growth teams.
+        </p>
+      </div>
+
+      <div class="hero__portrait" style="min-height: 520px;">
+        <img src="/images/headshots/erroll-square.png" alt="Erroll Van Maramba studio portrait" />
+      </div>
+    </div>
+  </SectionShell>
+</BaseLayout>

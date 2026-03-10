@@ -1,0 +1,34 @@
+---
+import SectionShell from "../layout/SectionShell.astro";
+import Button from "../ui/Button.astro";
+import { featuredProjects } from "../../lib/content";
+---
+<SectionShell
+  id="selected-work"
+  eyebrow="02 / Selected Work"
+  title="Structured project snapshots with a sharper case-file presentation."
+  copy="The first phase uses a curated project dataset so the website already feels intentional before live filtering and richer case-page motion are added."
+>
+  <div class="card-grid cols-2">
+    {featuredProjects.slice(0, 4).map((project) => (
+      <article class="card project-card">
+        <div class="project-card__header">
+          <ul role="list" class="meta-list">
+            <li class="meta-chip">{project.category}</li>
+            <li class="meta-chip">{project.year}</li>
+            <li class="meta-chip">{project.clientType}</li>
+          </ul>
+          <h3 class="project-card__title">{project.title}</h3>
+          <p class="project-card__summary">{project.summary}</p>
+        </div>
+
+        <div class="project-card__actions">
+          <Button href={`/projects/${project.slug}`} variant="secondary">View case</Button>
+          <Button href={project.behanceUrl} target="_blank" rel="noreferrer">
+            Behance
+          </Button>
+        </div>
+      </article>
+    ))}
+  </div>
+</SectionShell>

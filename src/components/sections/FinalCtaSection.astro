@@ -1,0 +1,25 @@
+---
+import Button from "../ui/Button.astro";
+import { siteConfig } from "../../content/site";
+---
+<section class="section-divider">
+  <div class="container" style="padding-block: clamp(4rem, 8vw, 6rem);">
+    <div class="cta-panel">
+      <div class="stack-md">
+        <span class="eyebrow" style="color: rgba(245, 244, 239, 0.68);">06 / Contact</span>
+        <h2 class="section-title" style="max-width: 12ch; color: var(--color-bg);">
+          Ready to build creative that works harder for your brand?
+        </h2>
+        <p class="reading-width">
+          Available for freelance design support, eCommerce creative, Shopify content support,
+          and campaign-ready marketing design.
+        </p>
+      </div>
+
+      <div class="cluster">
+        <Button href={siteConfig.primaryCta.href}>{siteConfig.primaryCta.label}</Button>
+        <Button href={`mailto:${siteConfig.email}`} variant="secondary">Email me</Button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import FeaturedProjectsSection from "../components/sections/FeaturedProjectsSection.astro";
+import ServicesPreviewSection from "../components/sections/ServicesPreviewSection.astro";
+import CredibilitySection from "../components/sections/CredibilitySection.astro";
+import TestimonialHighlightSection from "../components/sections/TestimonialHighlightSection.astro";
+import FinalCtaSection from "../components/sections/FinalCtaSection.astro";
+import { siteConfig } from "../content/site";
+---
+<BaseLayout title={siteConfig.homeMeta.title} description={siteConfig.homeMeta.description}>
+  <HeroSection />
+  <FeaturedProjectsSection />
+  <ServicesPreviewSection />
+  <CredibilitySection />
+  <TestimonialHighlightSection />
+  <FinalCtaSection />
+</BaseLayout>

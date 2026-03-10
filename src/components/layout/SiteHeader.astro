@@ -1,0 +1,20 @@
+---
+import { navItems, siteConfig } from "../../content/site";
+---
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand" href="/">
+      <span class="header__mark">Professional Site</span>
+      <span class="header__name">{siteConfig.name}</span>
+    </a>
+
+    <nav class="header__nav" aria-label="Primary">
+      {navItems.map((item) => (
+        <a class="line-grow" href={item.href}>{item.label}</a>
+      ))}
+      <a class="button button--primary" href={siteConfig.primaryCta.href}>
+        {siteConfig.primaryCta.label}
+      </a>
+    </nav>
+  </div>
+</header>

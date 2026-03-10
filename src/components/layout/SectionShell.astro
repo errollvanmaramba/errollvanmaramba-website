@@ -1,0 +1,21 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  copy?: string;
+  divider?: boolean;
+}
+
+const { id, eyebrow = "Section", title, copy, divider = false } = Astro.props;
+---
+<section id={id} class:list={[divider && "section-divider"]}>
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">{eyebrow}</span>
+      <h2 class="section-title">{title}</h2>
+      {copy && <p class="section-copy">{copy}</p>}
+    </div>
+    <slot />
+  </div>
+</section>

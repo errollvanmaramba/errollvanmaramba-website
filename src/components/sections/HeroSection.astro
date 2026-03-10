@@ -1,0 +1,40 @@
+---
+import { siteConfig } from "../../content/site";
+import Button from "../ui/Button.astro";
+import MetaRow from "../ui/MetaRow.astro";
+---
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="fade-up">
+      <div class="hero__eyebrow">
+        <span class="eyebrow">01 / Introduction</span>
+      </div>
+      <h1 class="hero__title">{siteConfig.name}</h1>
+      <p class="hero__role">{siteConfig.role}</p>
+      <p class="hero__description">{siteConfig.tagline}</p>
+
+      <div class="hero__actions">
+        <Button href={siteConfig.primaryCta.href}>{siteConfig.primaryCta.label}</Button>
+        <Button href={siteConfig.secondaryCta.href} variant="secondary">
+          {siteConfig.secondaryCta.label}
+        </Button>
+      </div>
+
+      <div class="hero__meta">
+        <MetaRow items={siteConfig.heroMeta} />
+      </div>
+    </div>
+
+    <div class="hero__portrait fade-up fade-up-delay-1">
+      <img
+        src="/images/headshots/erroll-primary.jpg"
+        alt="Portrait of Erroll Van Maramba"
+        loading="eager"
+      />
+      <div class="hero__portrait-caption">
+        <span>Status</span>
+        <span>{siteConfig.availability}</span>
+      </div>
+    </div>
+  </div>
+</section>

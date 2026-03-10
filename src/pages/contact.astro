@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageShell from "../components/layout/PageShell.astro";
+import SectionShell from "../components/layout/SectionShell.astro";
+import Button from "../components/ui/Button.astro";
+import { siteConfig } from "../content/site";
+import { formEndpoint } from "../lib/form";
+---
+<BaseLayout title="Contact — Erroll Van Maramba" description="Contact Erroll Van Maramba for freelance creative marketing design, Shopify support, and eCommerce creative work.">
+  <PageShell
+    eyebrow="Contact"
+    title="A low-friction way to start a conversation."
+    summary="Phase 1 includes the form structure and endpoint wiring pattern. Phase 2 should add client-side validation and success/error state handling."
+  />
+
+  <SectionShell
+    eyebrow="Inquiry"
+    title="Let’s build creative that works harder for your brand."
+    copy="Available for freelance design support, eCommerce creative, Shopify content support, and modern campaign visuals."
+  >
+    <div class="grid-2">
+      <article class="card contact-card">
+        <div class="stack-md">
+          <h2>Direct contact</h2>
+          <p class="text-muted">You can reach me directly through email or LinkedIn while the richer interaction layer is added in the next phase.</p>
+        </div>
+
+        <div class="stack-sm">
+          <a class="line-grow" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          <a class="line-grow" href={siteConfig.linkedin} target="_blank" rel="noreferrer">LinkedIn profile</a>
+          <a class="line-grow" href={siteConfig.behance} target="_blank" rel="noreferrer">Behance portfolio</a>
+        </div>
+
+        <p class="helper-note">{siteConfig.availability}</p>
+      </article>
+
+      <article class="card">
+        <form class="contact-form" action={formEndpoint} method="POST">
+          <input class="visually-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" required></textarea>
+          </label>
+
+          <button class="button button--primary" type="submit">Send message</button>
+          <p class="helper-note">
+            Replace the placeholder Formspree endpoint in your environment variables before deployment.
+          </p>
+        </form>
+      </article>
+    </div>
+  </SectionShell>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import { siteConfig } from "../../content/site";
+---
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__meta stack-sm">
+      <p>© {new Date().getFullYear()} {siteConfig.name}</p>
+      <p>Creative marketing designer for eCommerce brands.</p>
+    </div>
+
+    <div class="cluster">
+      <a class="line-grow" href={`mailto:${siteConfig.email}`}>Email</a>
+      <a class="line-grow" href={siteConfig.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="line-grow" href={siteConfig.behance} target="_blank" rel="noreferrer">Behance</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageShell from "../components/layout/PageShell.astro";
+import SectionShell from "../components/layout/SectionShell.astro";
+import Button from "../components/ui/Button.astro";
+import { experience } from "../content/experience";
+---
+<BaseLayout title="Experience — Erroll Van Maramba" description="Experience timeline for Erroll Van Maramba across marketing design, eCommerce support, Shopify content, and freelance creative work.">
+  <PageShell
+    eyebrow="Experience"
+    title="Role history organized for quick scanning by clients, founders, and hiring teams."
+    summary="This page turns resume content into a cleaner digital timeline while preserving a downloadable PDF for formal review."
+  />
+
+  <SectionShell
+    eyebrow="Timeline"
+    title="Experience across creative production, eCommerce support, and digital marketing design."
+    copy="Phase 1 focuses on clean hierarchy, readable summaries, and a premium presentation of your role history."
+  >
+    <div class="timeline">
+      {experience.map((entry) => (
+        <article class="timeline-item">
+          <div class="timeline-item__top">
+            <div class="stack-sm">
+              <div class="timeline-item__company">
+                <img src={entry.logo} alt={entry.company} />
+              </div>
+              <h2>{entry.role}</h2>
+              <p class="text-muted">{entry.summary}</p>
+            </div>
+            <div class="stack-sm text-muted">
+              <strong>{entry.period}</strong>
+              <span>{entry.location}</span>
+            </div>
+          </div>
+
+          <ul class="service-list" role="list">
+            {entry.highlights.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    <div style="height: var(--space-xl);"></div>
+
+    <Button href="/resume/Erroll_Van_Maramba_Resume_2026.pdf" target="_blank" rel="noreferrer">
+      Download resume PDF
+    </Button>
+  </SectionShell>
+</BaseLayout>

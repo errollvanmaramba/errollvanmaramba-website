@@ -1,0 +1,46 @@
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up {
+    animation: fade-up var(--duration-slow) var(--ease-emphasis) both;
+  }
+
+  .fade-up-delay-1 {
+    animation-delay: 80ms;
+  }
+
+  .fade-up-delay-2 {
+    animation-delay: 160ms;
+  }
+
+  .line-grow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .line-grow::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-base) var(--ease-emphasis);
+  }
+
+  .line-grow:hover::after,
+  .line-grow:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

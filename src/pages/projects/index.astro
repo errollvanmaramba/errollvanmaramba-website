@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageShell from "../../components/layout/PageShell.astro";
+import { allProjects } from "../../lib/content";
+import Button from "../../components/ui/Button.astro";
+---
+<BaseLayout title="Projects — Erroll Van Maramba" description="Selected projects by Erroll Van Maramba across eCommerce, landing page, redesign, and UX/UI work.">
+  <PageShell
+    eyebrow="Projects"
+    title="Selected work organized like structured case snapshots."
+    summary="Phase 1 includes a curated projects dataset and internal detail pages, ready for a richer filter and motion layer in the next phase."
+  />
+
+  <section>
+    <div class="container">
+      <div class="card-grid cols-2">
+        {allProjects.map((project) => (
+          <article class="card project-card">
+            <div class="project-card__header">
+              <ul role="list" class="meta-list">
+                <li class="meta-chip">{project.category}</li>
+                <li class="meta-chip">{project.year}</li>
+                <li class="meta-chip">{project.clientType}</li>
+              </ul>
+              <h2 class="project-card__title">{project.title}</h2>
+              <p class="project-card__summary">{project.summary}</p>
+            </div>
+            <div class="project-card__actions">
+              <Button href={`/projects/${project.slug}`} variant="secondary">View case</Button>
+              <Button href={project.behanceUrl} target="_blank" rel="noreferrer">Behance</Button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

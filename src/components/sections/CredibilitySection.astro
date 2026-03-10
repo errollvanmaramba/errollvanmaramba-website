@@ -1,0 +1,28 @@
+---
+import SectionShell from "../layout/SectionShell.astro";
+import { siteConfig } from "../../content/site";
+---
+<SectionShell
+  eyebrow="04 / Credibility"
+  title="Built around the kind of proof clients and hiring teams scan for quickly."
+  copy="Phase 1 focuses on trust signals: role depth, selected proof points, recognizable brands, and a clear availability signal."
+  divider={true}
+>
+  <div class="stats-grid">
+    {siteConfig.stats.map((stat) => (
+      <article class="stat-card">
+        <div class="stat-card__value">{stat.value}</div>
+        <p class="text-muted">{stat.label}</p>
+      </article>
+    ))}
+  </div>
+
+  <div style="height: var(--space-2xl);"></div>
+
+  <div class="logo-strip" aria-label="Selected companies and brands">
+    <div class="logo-item"><img src="/images/logos/starfire-direct-logo.png" alt="Starfire Direct" /></div>
+    <div class="logo-item"><img src="/images/logos/microsourcing-logo.png" alt="MicroSourcing" /></div>
+    <div class="logo-item"><img src="/images/logos/outova-logo.png" alt="Outova" /></div>
+    <div class="logo-item"><span class="eyebrow" style="margin-inline:auto;">Experience + freelance</span></div>
+  </div>
+</SectionShell>

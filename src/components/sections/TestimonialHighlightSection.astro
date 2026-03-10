@@ -1,0 +1,21 @@
+---
+import SectionShell from "../layout/SectionShell.astro";
+import { testimonials } from "../../content/testimonials";
+
+const quote = testimonials[0];
+---
+<SectionShell
+  eyebrow="05 / Recommendation"
+  title="A recommendation that supports reliability, adaptability, and team value."
+  copy="This featured recommendation is included early because your credibility is not just visual — it is supported by how people describe your work."
+  divider={true}
+>
+  <article class="quote-card">
+    <p>{quote.highlight}</p>
+    <blockquote>“{quote.quote}”</blockquote>
+    <div class="stack-sm">
+      <strong>{quote.name}</strong>
+      <p>{quote.role} · {quote.company}</p>
+    </div>
+  </article>
+</SectionShell>
