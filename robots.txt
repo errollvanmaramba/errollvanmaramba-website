@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://errollvanmaramba.github.io/errollvanmaramba-website/sitemap.xml
