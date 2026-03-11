@@ -1376,9 +1376,18 @@
                             body: JSON.stringify({ prompt: finalPrompt })
                         });
 
-                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                        
-                        const data = await response.json();
+                        // Safely try to read the error details from the Worker
+                        let data;
+                        try {
+                            data = await response.json();
+                        } catch (parseError) {
+                            throw new Error(`Worker did not return JSON. It might be crashing before running the code.`);
+                        }
+
+                        // If the response wasn't a success (like a 500 error), throw the EXACT error
+                        if (!response.ok) {
+                            throw new Error(data.error || `HTTP error! status: ${response.status}`);
+                        }
                         
                         if (data.reply) {
                             aiResultBox.innerHTML = `<strong>✨ AI Fit Analysis:</strong><br><br>${data.reply.replace(/\n/g, '<br>')}`;
@@ -1388,7 +1397,8 @@
                         }
                     } catch (error) {
                         console.error("Worker Fetch Error:", error);
-                        aiResultBox.innerHTML = `<span style="color: red;">Oops, the AI is taking a quick break. Please try again in a moment.</span>`;
+                        // WE CHANGED THIS LINE: It will now show the exact technical error on screen
+                        aiResultBox.innerHTML = `<span style="color: red;"><strong>Error Details:</strong> ${error.message}<br><br>Oops, the AI is taking a quick break. Please try again in a moment.</span>`;
                         aiResultBox.style.display = 'block';
                     } finally {
                         // Restore UI
@@ -1402,5 +1412,3 @@
     </script>
 </body>
 </html>
-
-
