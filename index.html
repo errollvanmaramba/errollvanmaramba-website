@@ -1363,7 +1363,7 @@
                     generateBtn.innerHTML = 'Analyzing...';
 
                     // TODO: Replace this with the actual URL Cloudflare gives you for your worker!
-                    const CLOUDFLARE_WORKER_URL = "ai-matchmaker.erroll-maramba04.workers.dev"; 
+                    const CLOUDFLARE_WORKER_URL = "https://ai-matchmaker.erroll-maramba04.workers.dev"; 
                     
                     // We combine your context and the user's query into one prompt for the Worker
                     const finalPrompt = `Here is my background context:\n${errollContext}\n\nAnalyze this job description or company and tell me why I am a great fit:\n${query}`;
@@ -1402,4 +1402,5 @@
     </script>
 </body>
 </html>
+
 
