@@ -5,13 +5,14 @@ const topics = {
     'Klaviyo', 'Photoshop', 'Illustrator', 'Canva',
   ],
   commerce: [
-    'Shopify', 'WooCommerce', 'e-commerce', 'ecommerce', 'storefront', 'product merchandising',
-    'visual merchandising', 'product listing', 'product listings', 'product media',
+    'Shopify', 'WooCommerce', 'e-commerce', 'ecommerce', 'storefront', 'storefronts',
+    'product merchandising', 'visual merchandising', 'product listing', 'product listings', 'product media',
     'product page', 'product pages', 'catalog', 'catalogue',
   ],
   ux: [
-    'UX', 'UI', 'Figma', 'web design', 'website design', 'website redesign', 'interface design',
-    'user experience', 'user flow', 'wireframes', 'wireframing', 'prototyping', 'landing page',
+    'UX', 'UI', 'Figma', 'web design', 'website design', 'website redesign', 'website redesigns',
+    'interface design', 'user experience', 'user flow', 'user flows', 'wireframe', 'wireframes',
+    'wireframing', 'prototyping', 'landing page', 'landing pages',
   ],
   content: [
     'SEO', 'SEM', 'search engine optimization', 'content writing', 'content marketing',
@@ -19,8 +20,8 @@ const topics = {
   ],
   production: [
     'AI imagery', 'AI-assisted', 'generative AI', 'product imagery', 'lifestyle imagery',
-    'compositing', 'retouching', 'short-form video', 'video editing', 'video production',
-    'product video', 'product videos', 'CapCut', 'HeyGen', 'Midjourney',
+    'compositing', 'retouching', 'short-form video', 'short-form videos', 'video editing',
+    'video editor', 'video production', 'product video', 'product videos', 'CapCut', 'HeyGen', 'Midjourney',
   ],
 };
 

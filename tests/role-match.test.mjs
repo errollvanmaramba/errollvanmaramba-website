@@ -17,6 +17,18 @@ test('recognizes mixed case, punctuation and flexible phrase spacing', () => {
   assert.ok(matches[0].terms.includes('Figma'));
 });
 
+test('recognizes common plural names for project deliverables', () => {
+  assert.deepEqual(
+    topicsFor('We need a product designer to create landing pages, storefronts, and social ads.'),
+    ['campaigns', 'commerce', 'ux'],
+  );
+});
+
+test('recognizes video editing roles and plural deliverables', () => {
+  assert.deepEqual(topicsFor('Video editor wanted for our content team.'), ['production']);
+  assert.deepEqual(topicsFor('Produce short-form videos for launches.'), ['production']);
+});
+
 test('does not match fragments inside longer words', () => {
   assert.deepEqual(topicsFor('Repair paint sprayers and maintain a paid training program.'), []);
 });
