@@ -1,1418 +1,282 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erroll Van Maramba | Marketing Designer</title>
-    
-    <!-- Google Fonts for Modern Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* =========================================
-           CSS VARIABLES & RESET
-           ========================================= */
-        :root {
-            --primary: #1a365d; /* Navy Blue */
-            --primary-hover: #0f223f; /* Dark Navy */
-            --text-dark: #000000; /* Black */
-            --text-muted: #4b5563;
-            --bg-light: #ffffff; /* White */
-            --bg-alt: #f8fafc;
-            --border-color: #e2e8f0;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --font-serif: 'DM Serif Display', serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* =========================================
-           TYPOGRAPHY & UTILITIES
-           ========================================= */
-        h1, h2, h3, h4 {
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            color: var(--text-dark);
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            padding: 6rem 0;
-        }
-
-        .bg-alt {
-            background-color: var(--bg-alt);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.8rem 1.8rem;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: var(--transition);
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -10px rgba(26, 54, 93, 0.6);
-        }
-
-        .btn-outline {
-            border-color: var(--text-dark);
-            color: var(--text-dark);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--text-dark);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* =========================================
-           NAVIGATION
-           ========================================= */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-family: var(--font-serif);
-            font-weight: 700;
-            font-size: 1.4rem;
-            letter-spacing: 0.5px; /* Increased letter spacing here */
-            color: var(--primary);
-        }
-
-        .logo img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary);
-        }
-
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .mobile-toggle {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .mobile-toggle span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: var(--text-dark);
-            transition: var(--transition);
-        }
-
-        /* =========================================
-           HERO SECTION
-           ========================================= */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px; /* Offset for header */
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-family: var(--font-serif);
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text h1 span {
-            color: var(--primary);
-            font-style: italic;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 500px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            display: block;
-            margin: 0 auto;
-            object-fit: cover;
-            aspect-ratio: 4/5;
-        }
-
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            right: 0px;
-            bottom: 20px;
-            left: 40px;
-            background-color: var(--primary);
-            border-radius: 20px;
-            z-index: -1;
-            opacity: 0.1;
-        }
-
-        /* =========================================
-           ABOUT SECTION (Skills & Edu)
-           ========================================= */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .skill-group {
-            margin-bottom: 2rem;
-        }
-        
-        .skill-group h3 {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-
-        .pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-
-        .pill {
-            background-color: white;
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .pill:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .edu-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-            border-left: 2px solid var(--primary);
-        }
-
-        /* =========================================
-           EXPERIENCE SECTION
-           ========================================= */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .exp-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .exp-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            transform: translateY(-5px);
-            border-color: rgba(26, 54, 93, 0.3);
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .exp-title h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .exp-title h4 {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-bottom: 0;
-        }
-
-        .exp-date {
-            background-color: var(--bg-alt);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .exp-card ul {
-            list-style: disc;
-            padding-left: 1.2rem;
-            color: var(--text-muted);
-        }
-
-        .exp-card li {
-            margin-bottom: 0.8rem;
-        }
-
-        .brand-link {
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: underline;
-            text-decoration-color: transparent;
-            transition: var(--transition);
-        }
-
-        .brand-link:hover {
-            text-decoration-color: var(--primary);
-        }
-
-        /* =========================================
-           TESTIMONIALS & CONTACT
-           ========================================= */
-        .testimonials-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
-            border: 1px solid var(--border-color);
-            border-top: 6px solid var(--primary);
-            overflow: hidden;
-            min-height: 600px; /* Adjusted height to accommodate the widget */
-        }
-
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-content p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-        }
-
-        /* Form Styles */
-        .contact-form {
-            max-width: 100%;
-            margin: 0 auto 3rem auto;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1.2rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-            background-color: var(--bg-alt);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.15);
-            background-color: var(--bg-light);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        /* =========================================
-           ANIMATIONS (Triggered by JS)
-           ========================================= */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-
-        /* =========================================
-           AI MATCHMAKER 
-           ========================================= */
-        .ai-match-container {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-top: 6px solid var(--primary);
-            border-radius: 16px;
-            padding: 3rem;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
-        }
-        .ai-textarea {
-            width: 100%;
-            min-height: 120px;
-            margin-bottom: 1.5rem;
-            resize: vertical;
-        }
-        .ai-result {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--bg-alt);
-            border-left: 4px solid var(--primary);
-            border-radius: 8px;
-            text-align: left;
-            display: none;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-        .spinner {
-            display: none;
-            width: 30px;
-            height: 30px;
-            border: 3px solid rgba(26, 54, 93, 0.2);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s ease-in-out infinite;
-            margin: 1.5rem auto;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* =========================================
-           MEDIA QUERIES (Responsive Design)
-           ========================================= */
-        @media (max-width: 992px) {
-            .hero-content, .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-
-            .hero-image {
-                order: -1; /* Image on top for mobile */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 3rem;
-                transition: var(--transition);
-            }
-
-            .nav-links.nav-active {
-                left: 0;
-            }
-
-            .nav-links a {
-                font-size: 1.5rem;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
-            /* Hamburger Animation */
-            .mobile-toggle.toggle-active span:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            .mobile-toggle.toggle-active span:nth-child(2) {
-                opacity: 0;
-            }
-            .mobile-toggle.toggle-active span:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .section { padding: 4rem 0; }
-            h2 { font-size: 2rem; }
-            
-            .exp-header {
-                flex-direction: column;
-            }
-            .exp-date { align-self: flex-start; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Erroll Van Maramba | Marketing Designer</title>
+  <meta name="description" content="Portfolio of Erroll Van Maramba, a marketing designer in Metro Manila working across campaign design, e-commerce, web design, and AI-assisted creative production.">
+  <meta name="theme-color" content="#f8f1e8">
+  <link rel="canonical" href="https://errollvanmaramba.github.io/errollvanmaramba-website/">
+  <link rel="icon" href="erroll3232.webp" type="image/webp">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Erroll Van Maramba | Marketing Designer">
+  <meta property="og:description" content="Campaign creative, e-commerce design, and product imagery by Erroll Van Maramba.">
+  <meta property="og:url" content="https://errollvanmaramba.github.io/errollvanmaramba-website/">
+  <meta property="og:image" content="https://errollvanmaramba.github.io/errollvanmaramba-website/erroll-van-maramba-marketing-designer-portrait.jpg">
+  <meta property="og:image:alt" content="Erroll Van Maramba">
+  <meta name="twitter:card" content="summary">
+  <link rel="preload" href="assets/fonts/instrument-serif-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/portfolio.css">
+  <script type="module" src="assets/site.mjs"></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-content">
+      <a class="wordmark" href="#home">Erroll Van Maramba</a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" hidden>Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#experiences">Experience</a>
+        <a href="#role-fit">Role fit</a>
+        <a href="#testimonials">Recommendations</a>
+        <a class="nav-contact" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Header & Navigation -->
-    <header id="header">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="erroll3232.png" alt="Erroll Logo">
-                Erroll Van Maramba
+  <main id="main" tabindex="-1">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow hero-role">Marketing Designer</p>
+          <h1 id="hero-title">Erroll Van <em>Maramba</em></h1>
+          <p class="hero-intro">I design campaigns, storefronts, and product visuals for e-commerce and lifestyle brands.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">View selected work</a>
+            <a class="text-link" href="#contact">Get in touch</a>
+          </div>
+          <p class="hero-location">Based in Metro Manila, Philippines</p>
+        </div>
+        <div class="portrait-frame">
+          <img class="hero-portrait" src="erroll-van-maramba-marketing-designer-portrait.jpg" alt="Erroll Van Maramba" width="500" height="625" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <section class="section work-section" id="work" aria-labelledby="work-title">
+      <div class="shell">
+        <div class="section-header">
+          <h2 id="work-title">Selected work</h2>
+          <a class="text-link" href="https://www.behance.net/errollvanmaramba">Full Behance portfolio</a>
+        </div>
+        <div class="project-grid">
+          <article class="project" id="project-marco-elena">
+            <a class="project-link" href="https://www.behance.net/gallery/245896893/MARCO-ELENA-Wedding-Website">
+              <div class="project-cover cover-wedding">
+                <h3>Marco <em>&amp;</em> Elena</h3>
+              </div>
+              <span class="project-meta"><span>Wedding website</span><span class="project-link-label">View on Behance</span></span>
             </a>
-            
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#about" class="nav-link">About Me</a></li>
-                    <li><a href="#experiences" class="nav-link">Experiences</a></li>
-                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                    <li><a href="#ai-match" class="nav-link">✨ AI Match</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="mobile-toggle" id="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <p>A Figma and Photoshop design that makes it easy for guests to find the schedule, venue, and RSVP.</p>
+          </article>
+          <article class="project" id="project-fresh-rides">
+            <a class="project-link" href="https://www.behance.net/gallery/170828615/Fresh-Rides-Premium-Car-Care-Woocommerce-Online-Store">
+              <div class="project-cover cover-commerce">
+                <h3>Fresh Rides <span>Premium Car Care</span></h3>
+              </div>
+              <span class="project-meta"><span>WooCommerce concept</span><span class="project-link-label">View on Behance</span></span>
+            </a>
+            <p>A storefront concept that gives automotive care products clearer categories and more space to stand out.</p>
+          </article>
+          <article class="project" id="project-talyer">
+            <a class="project-link" href="https://www.behance.net/gallery/168621293/UXUI-Design-Talyer-App-(Car-Service-Booking-App)">
+              <div class="project-cover cover-app">
+                <h3>Talyer<span>+</span></h3>
+              </div>
+              <span class="project-meta"><span>Mobile UX/UI</span><span class="project-link-label">View on Behance</span></span>
+            </a>
+            <p>A car service booking app concept focused on making it easier to schedule and manage an appointment.</p>
+          </article>
         </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <div class="hero-text reveal">
-                <h1>Crafting visual narratives that <span>drive growth.</span></h1>
-                <p>Hello! I am Erroll Van Maramba, I help e-commerce and lifestyle brands increase visibility and conversion with campaign-ready design, AI-enhanced product imagery, and SEO-focused creative production.</p>
-                <div class="hero-actions">
-                    <a href="#experiences" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Let's Connect</a>
-                </div>
-            </div>
-            <div class="hero-image reveal delay-2">
-                <img src="erroll-van-maramba-marketing-designer-portrait.jpg" alt="Erroll Van Maramba Portrait">
-            </div>
-        </div>
+      </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="section bg-alt" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="reveal">
-                    <h2>About Me</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Based in Metro Manila, Philippines, I bring a unique blend of strategic marketing insight and high-end visual storytelling to every project. Whether it's producing AI-assisted lifestyle imagery, executing SEO-driven web content, or editing engaging video assets, my goal is to elevate brand visibility and conversion.</p>
-                    
-                    <h3>Education</h3>
-                    <div class="edu-item" style="margin-top: 1rem;">
-                        <h4 style="margin-bottom: 0.2rem;">B.S. Marketing</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Technological Institute of the Philippines<br>Jun 2012 - Oct 2016</p>
-                    </div>
-
-                    <h3 style="margin-top: 2rem;">Certifications</h3>
-                    <ul style="color: var(--text-muted); list-style: disc; padding-left: 1.2rem; margin-top: 1rem;">
-                        <li>Foundations of User Experience (UX) Design</li>
-                        <li>Start the UX Design Process: Empathize, Define, & Ideate</li>
-                        <li>Build Wireframes and Low-Fidelity Prototypes</li>
-                        <li>UI/UX Design Essentials Course</li>
-                    </ul>
-                </div>
-                
-                <div class="reveal delay-2">
-                    <h2>Technical Arsenal</h2>
-                    
-                    <div class="skill-group">
-                        <h3>Design & Creative</h3>
-                        <div class="pills">
-                            <span class="pill">Adobe Photoshop</span>
-                            <span class="pill">Adobe Illustrator</span>
-                            <span class="pill">Canva</span>
-                            <span class="pill">Figma</span>
-                            <span class="pill">UI/UX Design</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3>Video Production</h3>
-                        <div class="pills">
-                            <span class="pill">CapCut</span>
-                            <span class="pill">HeyGen</span>
-                            <span class="pill">Scripting & Editing</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3>Artificial Intelligence</h3>
-                        <div class="pills">
-                            <span class="pill">ChatGPT</span>
-                            <span class="pill">Claude</span>
-                            <span class="pill">Midjourney</span>
-                            <span class="pill">Google Gemini</span>
-                            <span class="pill">On-Page SEO</span>
-                            <span class="pill">Originality.AI</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3>Marketing & Platforms</h3>
-                        <div class="pills">
-                            <span class="pill">Shopify</span>
-                            <span class="pill">Pin Generator</span>
-                            <span class="pill">Sociamonials</span>
-                            <span class="pill">SharePoint</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section experience-section" id="experiences" aria-labelledby="experience-title">
+      <div class="shell experience-grid">
+        <div class="experience-intro">
+          <h2 id="experience-title">Experience</h2>
+          <p>I work across design and marketing, from creating the assets for a launch to getting them ready for Shopify, social, and search.</p>
+          <div class="background" id="about">
+            <h3>Education</h3>
+            <p><strong>B.S. Marketing</strong><br>Technological Institute of the Philippines<br>2012–2016</p>
+            <details>
+              <summary>Certifications</summary>
+              <ul>
+                <li>AI for Marketing, LinkedIn</li>
+                <li>UI/UX Design Essentials Course, CIIT</li>
+                <li>Build Wireframes and Low-Fidelity Prototypes, Google</li>
+                <li>Start the UX Design Process: Empathize, Define, and Ideate, Google</li>
+                <li>Foundations of User Experience (UX) Design, Google</li>
+              </ul>
+            </details>
+          </div>
         </div>
+        <ol class="experience-list">
+          <li id="experience-outova">
+            <div class="role-heading"><h3>Outova</h3><p>Nov 2025 – Mar 2026</p></div>
+            <p class="role-title">Marketing design · Remote</p>
+            <p>Created campaigns, AI-assisted lifestyle imagery, SEO blog content, and product videos for Patio Productions, Starfire Direct, Harmonia Living, and Artificial Turf Supply.</p>
+          </li>
+          <li id="experience-starfire">
+            <div class="role-heading"><h3>Starfire Direct</h3><p>Jul 2023 – Mar 2026</p></div>
+            <p class="role-title">Marketing Designer · United States</p>
+            <p>Designed product imagery, line drawings, and ads, and managed Shopify media with search-friendly file names and alt text. Supported a website redesign and an SEO/SEM program that helped grow organic traffic 2–5% month over month.</p>
+          </li>
+          <li id="experience-lake-blue">
+            <div class="role-heading"><h3>Lake Blue Media LLC</h3><p>May 2025 – Nov 2025</p></div>
+            <p class="role-title">Marketing Designer · Denver, CO</p>
+            <p>Produced YouTube Shorts and product videos, prepared assets for blogs and social channels across brands, and supported website updates.</p>
+          </li>
+          <li id="experience-microsourcing">
+            <div class="role-heading"><h3>MicroSourcing</h3><p>Jul 2023 – Jul 2024</p></div>
+            <p class="role-title">Marketing Designer · Philippines</p>
+            <p>Prepared e-commerce product media, audited listings for accuracy and brand standards, and worked with marketing leads on assets for product launches.</p>
+          </li>
+          <li id="experience-freelance">
+            <div class="role-heading"><h3>Freelance</h3><p>Apr 2021 – Jul 2023</p></div>
+            <p class="role-title">Graphic Designer · Remote</p>
+            <p>Designed logos, print collateral, and social ads using Illustrator and Photoshop.</p>
+          </li>
+        </ol>
+      </div>
     </section>
 
-    <!-- EXPERIENCES SECTION -->
-    <section class="section" id="experiences">
-        <div class="container">
-            <h2 style="text-align: center;" class="reveal">Professional Experience</h2>
-            
-            <div class="timeline">
-                
-                <!-- Experience 1 -->
-                <div class="exp-card reveal">
-                    <div class="exp-header">
-                        <div class="exp-title">
-                            <h3>Outova</h3>
-                            <h4>Remote</h4>
-                        </div>
-                        <span class="exp-date">Nov 2025 - March 2026</span>
-                    </div>
-                    <ul>
-                        <li>Delivered campaign-ready creative across portfolio brands (<a href="https://www.patioproductions.com/" target="_blank" class="brand-link">Patio Productions</a>, <a href="https://starfiredirect.com/" target="_blank" class="brand-link">Starfire Direct</a>, <a href="https://harmonialiving.com/" target="_blank" class="brand-link">Harmonia Living</a>, <a href="https://www.artificialturfsupply.com/" target="_blank" class="brand-link">Artificial Turf Supply</a>) for web and social channels.</li>
-                        <li>Produced AI-assisted product and lifestyle imagery with advanced post-production (retouching, compositing) to align with brand guidelines.</li>
-                        <li>Drafted and refreshed SEO blog content using AI writing tools with originality checks to maintain quality, compliance, and brand voice.</li>
-                        <li>Created multi-format video assets (16:9, 9:16, product videos), including scripting, asset preparation, editing, GIFs, and short loops.</li>
-                    </ul>
-                </div>
-
-                <!-- Experience 2 -->
-                <div class="exp-card reveal">
-                    <div class="exp-header">
-                        <div class="exp-title">
-                            <h3>Marketing Designer</h3>
-                            <h4>Lake Blue Media LLC — Denver, CO, USA</h4>
-                        </div>
-                        <span class="exp-date">May 2025 - Nov 2025</span>
-                    </div>
-                    <ul>
-                        <li>Curated and optimized images and content for blog and social posts, managing social media execution across multiple brands.</li>
-                        <li>Produced product and short-form video content (YouTube videos, Shorts) and slideshow videos.</li>
-                        <li>Supported website updates and maintenance in collaboration with stakeholders.</li>
-                    </ul>
-                </div>
-
-                <!-- Experience 3 -->
-                <div class="exp-card reveal">
-                    <div class="exp-header">
-                        <div class="exp-title">
-                            <h3>Marketing Designer</h3>
-                            <h4><a href="https://starfiredirect.com/" target="_blank" class="brand-link" style="color:inherit">Starfire Direct</a> — United States</h4>
-                        </div>
-                        <span class="exp-date">Jul 2023 - March 2026</span>
-                    </div>
-                    <ul>
-                        <li>Developed high-quality product media including imagery, line drawings, and ad creatives; managed Shopify uploads with SEO-optimized file naming and alt text.</li>
-                        <li>Partnered with marketing leadership on website redesign and go-to-market media roadmaps aligned with performance KPIs; audited listings for brand and visual standards.</li>
-                        <li>Helped build and scale an SEO/SEM program resulting in 2-5% month-over-month organic traffic growth and ~30% year-to-date visibility improvement.</li>
-                    </ul>
-                </div>
-
-                <!-- Experience 4 -->
-                <div class="exp-card reveal">
-                    <div class="exp-header">
-                        <div class="exp-title">
-                            <h3>Marketing Designer</h3>
-                            <h4>MicroSourcing — Philippines (Hybrid)</h4>
-                        </div>
-                        <span class="exp-date">Jul 2023 - Jul 2024</span>
-                    </div>
-                    <ul>
-                        <li>Managed product media, including images, line drawings, and ad visuals, while optimizing website listings for e-commerce.</li>
-                        <li>Collaborated on media creation roadmaps for product launches, aligning plans with KPI expectations.</li>
-                        <li>Maintained manufacturer and supplier files to ensure product accuracy and minimize listing errors; audited online and offline listings for brand adherence.</li>
-                        <li>Streamlined processes to improve task execution speed and team efficiency; enhanced software knowledge within the marketing/e-commerce team.</li>
-                        <li>Presented listing audit reports and insights to marketing leadership and maintained strong relationships with partners and stakeholders.</li>
-                    </ul>
-                </div>
-
-                <!-- Experience 5 -->
-                <div class="exp-card reveal">
-                    <div class="exp-header">
-                        <div class="exp-title">
-                            <h3>Graphic Designer (Freelance)</h3>
-                            <h4>Remote</h4>
-                        </div>
-                        <span class="exp-date">Apr 2021 - Jul 2023</span>
-                    </div>
-                    <ul>
-                        <li>Designed logos, print collateral, and social media ads for various clients.</li>
-                        <li>Executed end-to-end creative projects using Adobe Illustrator and Photoshop.</li>
-                    </ul>
-                </div>
-
+    <section class="section role-section" id="ai-match" aria-labelledby="role-fit">
+      <div class="shell role-grid">
+        <div class="role-intro">
+          <h2 id="role-fit">Explore role fit</h2>
+          <p>Find projects and experience relevant to the work you’re hiring for.</p>
+          <div id="role-controls" hidden>
+            <div class="focus-filters" role="group" aria-label="Browse experience by focus">
+              <button type="button" value="all" aria-pressed="true">All</button>
+              <button type="button" value="campaigns" aria-pressed="false">Campaign design</button>
+              <button type="button" value="commerce" aria-pressed="false">E-commerce</button>
+              <button type="button" value="ux" aria-pressed="false">Web &amp; UX</button>
+              <button type="button" value="content" aria-pressed="false">SEO &amp; content</button>
+              <button type="button" value="production" aria-pressed="false">Imagery &amp; video</button>
             </div>
+            <details class="role-search">
+              <summary>Compare a job description</summary>
+              <form id="role-search-form">
+                <label for="role-description">Job description or skills</label>
+                <textarea id="role-description" rows="4" maxlength="4000" aria-describedby="role-search-help" required></textarea>
+                <p class="field-help" id="role-search-help">Matches terms such as Shopify or video editing. Your text stays in this browser.</p>
+                <div class="form-actions">
+                  <button class="button button-light" type="submit">Find relevant experience</button>
+                  <button class="text-button" type="reset">Clear</button>
+                </div>
+              </form>
+            </details>
+          </div>
         </div>
+        <div class="role-evidence">
+          <p class="role-status" id="role-status" role="status" aria-atomic="true"></p>
+          <div class="evidence-list">
+            <article class="evidence" data-topic="campaigns">
+              <h3>Campaign design</h3>
+              <p>Web and social campaign assets for Outova’s portfolio brands, plus logos, print collateral, and social ads for freelance clients.</p>
+              <p class="matched-terms" hidden></p>
+              <a href="#experience-outova">Outova experience</a>
+            </article>
+            <article class="evidence" data-topic="commerce">
+              <h3>E-commerce</h3>
+              <p>Shopify merchandising and product media at Starfire Direct, plus a WooCommerce storefront concept for Fresh Rides.</p>
+              <p class="matched-terms" hidden></p>
+              <a href="#experience-starfire">Starfire Direct experience</a>
+              <a href="#project-fresh-rides">Fresh Rides project</a>
+            </article>
+            <article class="evidence" data-topic="ux">
+              <h3>Web &amp; UX</h3>
+              <p>A wedding website that guides guests to event information and RSVP, and a mobile flow for booking a car service.</p>
+              <p class="matched-terms" hidden></p>
+              <a href="#project-marco-elena">Marco &amp; Elena project</a>
+              <a href="#project-talyer">Talyer+ project</a>
+            </article>
+            <article class="evidence" data-topic="content">
+              <h3>SEO &amp; content</h3>
+              <p>SEO blog updates for Outova and search-friendly product naming, alt text, and SEO/SEM support for Starfire Direct.</p>
+              <p class="matched-terms" hidden></p>
+              <a href="#experience-outova">Outova experience</a>
+              <a href="#experience-starfire">Starfire Direct experience</a>
+            </article>
+            <article class="evidence" data-topic="production">
+              <h3>Imagery &amp; video</h3>
+              <p>AI-assisted lifestyle imagery with retouching and compositing, alongside product videos, short-form edits, GIFs, and loops.</p>
+              <p class="matched-terms" hidden></p>
+              <a href="#experience-outova">Outova experience</a>
+              <a href="#experience-lake-blue">Lake Blue Media experience</a>
+            </article>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- TESTIMONIALS SECTION -->
-    <section class="section bg-alt" id="testimonials">
-        <div class="container">
-            <h2 style="text-align: center;" class="reveal">Recommendations</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;" class="reveal delay-1">Here is what people have to say about working with me.</p>
-            
-            <div class="testimonials-wrapper reveal delay-2">
-                <!-- Custom LinkedIn Recommendations Widget -->
-                <div id="erroll-linkedin-recommendations"></div>
-
-                <script>
-                (function () {
-                  const config = {
-                    targetId: "erroll-linkedin-recommendations",
-                    theme: {
-                      primary: "#1a365d",
-                      primaryHover: "#0f223f",
-                      textDark: "#000000",
-                      bg: "#ffffff",
-                      shellBg: "#eef2f5",
-                      cardBg: "#f9f9fa",
-                      border: "#dde3ea",
-                      muted: "#5c6b80",
-                      shadow: "0 10px 30px rgba(15, 23, 42, 0.08)"
-                    },
-                    profile: {
-                      name: "Erroll Van Maramba",
-                      title: "Marketing Designer",
-                      profileUrl: "https://www.linkedin.com/in/errollvanmaramba/",
-                      profileImage: "Erroll Van Maramba.jpg" 
-                    },
-                    recommendations: [
-                      {
-                        authorName: "Scotty Trento",
-                        authorTitle: "Marketing Executive | Scaling eCommerce Brands through Smarter Growth, SEO & Performance Media",
-                        relationship: "Scotty managed Erroll Van directly",
-                        date: "June 05, 2025",
-                        authorImage: "1741717808072.jpg", 
-                        text: "I had the pleasure of hiring Erroll in 2023 as a Graphic Designer for Starfire Direct, and from day one he became an essential part of the marketing team. Throughout our time working together, Erroll consistently brought creativity, reliability, and adaptability to every project. His work touched everything from social media content and email marketing in Klaviyo to product merchandising and backend maintenance in Shopify. Erroll is one of the most genuine and thoughtful people I’ve worked with. He is communicative, coachable, and always open to feedback. Our creative reviews and brainstorming sessions were some of the most productive and enjoyable parts of my day. Erroll always took critiques with a positive attitude and used them to improve his work. He is highly skilled in Adobe Creative Cloud and has grown into a confident and capable Shopify operator as well. His ability to manage both design and eCommerce responsibilities makes him a true asset to any team. Erroll, I’m proud of how far you’ve come. Keep pushing forward. You are going to do amazing things."
-                      }
-                    ]
-                  };
-
-                  function escapeHtml(value) {
-                    return String(value || "")
-                      .replace(/&/g, "&amp;")
-                      .replace(/</g, "&lt;")
-                      .replace(/>/g, "&gt;")
-                      .replace(/"/g, "&quot;")
-                      .replace(/'/g, "&#039;");
-                  }
-
-                  function initials(name) {
-                    return String(name || "")
-                      .split(" ")
-                      .filter(Boolean)
-                      .slice(0, 2)
-                      .map(part => part.charAt(0).toUpperCase())
-                      .join("");
-                  }
-
-                  function injectStyles(theme) {
-                    if (document.getElementById("evm-li-rec-styles")) return;
-
-                    const style = document.createElement("style");
-                    style.id = "evm-li-rec-styles";
-                    style.textContent = `
-                      .evm-li-widget {
-                        width: 100%;
-                        font-family: 'Plus Jakarta Sans', sans-serif;
-                        color: ${theme.textDark};
-                      }
-
-                      .evm-li-shell {
-                        background: ${theme.shellBg};
-                        border: 1px solid ${theme.border};
-                        border-radius: 22px;
-                        padding: 26px 18px 20px;
-                      }
-
-                      .evm-li-profile {
-                        display: flex;
-                        align-items: flex-start;
-                        gap: 22px;
-                        padding: 2px 2px 28px;
-                      }
-
-                      .evm-li-profile-avatar,
-                      .evm-li-rec-avatar {
-                        border-radius: 999px;
-                        overflow: hidden;
-                        flex-shrink: 0;
-                        background: linear-gradient(135deg, ${theme.primary}, ${theme.primaryHover});
-                        color: #ffffff;
-                        display: grid;
-                        place-items: center;
-                        font-weight: 700;
-                        letter-spacing: 0.02em;
-                      }
-
-                      .evm-li-profile-avatar {
-                        width: 104px;
-                        height: 104px;
-                        font-size: 30px;
-                        box-shadow: ${theme.shadow};
-                      }
-
-                      .evm-li-profile-avatar img,
-                      .evm-li-rec-avatar img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        display: block;
-                      }
-
-                      .evm-li-profile-name {
-                        margin: 18px 0 8px;
-                        font-size: 30px;
-                        line-height: 1.15;
-                        font-weight: 800;
-                        color: ${theme.textDark};
-                      }
-
-                      .evm-li-profile-title {
-                        font-size: 20px;
-                        line-height: 1.4;
-                        color: #26364d;
-                        opacity: 0.95;
-                      }
-
-                      .evm-li-rec-card {
-                        background: ${theme.cardBg};
-                        border-radius: 22px;
-                        box-shadow: ${theme.shadow};
-                        padding: 32px 34px 24px;
-                      }
-
-                      .evm-li-rec-head {
-                        display: flex;
-                        align-items: flex-start;
-                        gap: 18px;
-                      }
-
-                      .evm-li-rec-avatar {
-                        width: 76px;
-                        height: 76px;
-                        font-size: 22px;
-                      }
-
-                      .evm-li-rec-author {
-                        font-size: 22px;
-                        line-height: 1.25;
-                        font-weight: 800;
-                        color: #202b3b;
-                        margin-top: 4px;
-                      }
-
-                      .evm-li-rec-date {
-                        margin-top: 8px;
-                        font-size: 18px;
-                        color: ${theme.muted};
-                        line-height: 1.4;
-                      }
-
-                      .evm-li-rec-role {
-                        margin: 40px 0 6px;
-                        font-size: 24px;
-                        line-height: 1.45;
-                        font-weight: 800;
-                        color: #4a5c77;
-                      }
-
-                      .evm-li-rec-relationship {
-                        margin: 0 0 26px;
-                        padding-left: 18px;
-                        color: #4a5c77;
-                        font-size: 18px;
-                        line-height: 1.5;
-                      }
-
-                      .evm-li-rec-relationship li {
-                        margin: 0;
-                      }
-
-                      .evm-li-rec-body {
-                        margin: 0;
-                        font-size: 21px;
-                        line-height: 1.72;
-                        color: #2b3442;
-                      }
-
-                      .evm-li-rec-footer {
-                        margin-top: 42px;
-                        display: flex;
-                        align-items: center;
-                      }
-
-                      .evm-li-linkedin {
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 28px;
-                        height: 28px;
-                        text-decoration: none;
-                        color: #1f2c3d;
-                        transition: transform 0.18s ease, color 0.18s ease;
-                      }
-
-                      .evm-li-linkedin:hover {
-                        color: ${theme.primary};
-                        transform: translateY(-1px);
-                      }
-
-                      .evm-li-linkedin svg {
-                        width: 28px;
-                        height: 28px;
-                        display: block;
-                      }
-
-                      .evm-li-profile-wrap {
-                        min-width: 0;
-                      }
-
-                      .evm-li-rec-list {
-                        display: grid;
-                        gap: 22px;
-                      }
-
-                      @media (max-width: 980px) {
-                        .evm-li-profile-name {
-                          font-size: 26px;
-                        }
-
-                        .evm-li-profile-title {
-                          font-size: 18px;
-                        }
-
-                        .evm-li-rec-role {
-                          font-size: 21px;
-                        }
-
-                        .evm-li-rec-body {
-                          font-size: 18px;
-                        }
-                      }
-
-                      @media (max-width: 720px) {
-                        .evm-li-shell {
-                          padding: 16px;
-                        }
-
-                        .evm-li-profile {
-                          gap: 16px;
-                          padding-bottom: 20px;
-                        }
-
-                        .evm-li-profile-avatar {
-                          width: 76px;
-                          height: 76px;
-                          font-size: 22px;
-                        }
-
-                        .evm-li-profile-name {
-                          margin-top: 8px;
-                          font-size: 24px;
-                        }
-
-                        .evm-li-profile-title {
-                          font-size: 17px;
-                        }
-
-                        .evm-li-rec-card {
-                          padding: 22px 18px 18px;
-                        }
-
-                        .evm-li-rec-avatar {
-                          width: 58px;
-                          height: 58px;
-                          font-size: 18px;
-                        }
-
-                        .evm-li-rec-author {
-                          font-size: 20px;
-                        }
-
-                        .evm-li-rec-date {
-                          font-size: 16px;
-                        }
-
-                        .evm-li-rec-role {
-                          margin-top: 28px;
-                          font-size: 19px;
-                        }
-
-                        .evm-li-rec-relationship {
-                          font-size: 16px;
-                        }
-
-                        .evm-li-rec-body {
-                          font-size: 17px;
-                          line-height: 1.75;
-                        }
-                      }
-                    `;
-                    document.head.appendChild(style);
-                  }
-
-                  function avatarMarkup(imageUrl, alt, fallback, className) {
-                    if (imageUrl) {
-                      return `
-                        <div class="${className}">
-                          <img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(alt)}">
-                        </div>
-                      `;
-                    }
-
-                    return `
-                      <div class="${className}">
-                        ${escapeHtml(fallback)}
-                      </div>
-                    `;
-                  }
-
-                  function linkedinIcon(url) {
-                    return `
-                      <a class="evm-li-linkedin" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                          <path d="M4.98 3.5a2.48 2.48 0 1 0 0 4.96 2.48 2.48 0 0 0 0-4.96ZM3 8.98h3.96V21H3V8.98Zm7.18 0h3.79v1.64h.05c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.08V21h-3.95v-5.63c0-1.34-.03-3.07-1.87-3.07-1.88 0-2.17 1.47-2.17 2.98V21H10.18V8.98Z"/>
-                        </svg>
-                      </a>
-                    `;
-                  }
-
-                  function renderRecommendation(rec, profileUrl) {
-                    return `
-                      <article class="evm-li-rec-card">
-                        <div class="evm-li-rec-head">
-                          ${avatarMarkup(rec.authorImage, rec.authorName, initials(rec.authorName) || "S", "evm-li-rec-avatar")}
-                          <div>
-                            <div class="evm-li-rec-author">${escapeHtml(rec.authorName)}</div>
-                            <div class="evm-li-rec-date">${escapeHtml(rec.date || "")}</div>
-                          </div>
-                        </div>
-
-                        <div class="evm-li-rec-role">${escapeHtml(rec.authorTitle || "")}</div>
-
-                        ${
-                          rec.relationship
-                            ? `<ul class="evm-li-rec-relationship"><li>${escapeHtml(rec.relationship)}</li></ul>`
-                            : ``
-                        }
-
-                        <p class="evm-li-rec-body">${escapeHtml(rec.text)}</p>
-
-                        <div class="evm-li-rec-footer">
-                          ${linkedinIcon(profileUrl)}
-                        </div>
-                      </article>
-                    `;
-                  }
-
-                  function renderWidget(cfg) {
-                    const mount = document.getElementById(cfg.targetId);
-                    if (!mount) return;
-
-                    injectStyles(cfg.theme);
-
-                    const html = `
-                      <section class="evm-li-widget">
-                        <div class="evm-li-shell">
-                          <div class="evm-li-profile">
-                            ${avatarMarkup(cfg.profile.profileImage, cfg.profile.name, initials(cfg.profile.name) || "E", "evm-li-profile-avatar")}
-                            <div class="evm-li-profile-wrap">
-                              <div class="evm-li-profile-name">${escapeHtml(cfg.profile.name)}</div>
-                              <div class="evm-li-profile-title">${escapeHtml(cfg.profile.title)}</div>
-                            </div>
-                          </div>
-
-                          <div class="evm-li-rec-list">
-                            ${cfg.recommendations.map(rec => renderRecommendation(rec, cfg.profile.profileUrl)).join("")}
-                          </div>
-                        </div>
-                      </section>
-                    `;
-
-                    mount.innerHTML = html;
-                  }
-
-                  renderWidget(config);
-                })();
-                </script>
-            </div>
+    <section class="section recommendations-section" id="testimonials" aria-labelledby="recommendations-title">
+      <div class="shell">
+        <div class="section-header">
+          <h2 id="recommendations-title">Recommendations</h2>
+          <a class="text-link" href="https://www.linkedin.com/in/errollvanmaramba/">Read on LinkedIn</a>
         </div>
+        <div class="quote-grid">
+          <figure class="quote">
+            <blockquote cite="https://ph.linkedin.com/in/errollvanmaramba">
+              <p>“He’s a proactive, reliable teammate as well as a strong communicator”</p>
+            </blockquote>
+            <figcaption>
+              <strong>Ben Jolly</strong>
+              <p>Ben highlighted Erroll’s initiative, reliability across time zones, and ability to use AI to solve problems.</p>
+            </figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote cite="https://ph.linkedin.com/in/errollvanmaramba">
+              <p>“Erroll consistently brought creativity, reliability, and adaptability to every project.”</p>
+            </blockquote>
+            <figcaption>
+              <strong>Scotty Trento</strong>
+              <p>Former manager at Starfire Direct. Scotty highlighted Erroll’s work across design, Klaviyo, and Shopify.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
     </section>
 
-    <!-- AI MATCHMAKER SECTION -->
-    <section class="section" id="ai-match">
-        <div class="container reveal">
-            <h2 style="text-align: center;">✨ AI Career Matchmaker</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">Paste a job description or company name below, and my AI assistant will instantly analyze my resume to tell you why I'm the perfect fit.</p>
-            
-            <div class="ai-match-container">
-                <textarea id="ai-job-input" class="form-control ai-textarea" placeholder="Paste a job description, role requirements, or company name here..."></textarea>
-                <button id="generate-pitch-btn" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">✨ Generate Fit Analysis</button>
-                <div id="ai-spinner" class="spinner"></div>
-                <div id="ai-pitch-result" class="ai-result"></div>
-            </div>
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="shell contact-grid">
+        <div>
+          <h2 id="contact-title">Let’s talk.</h2>
+          <p>Tell me about the role or project you have in mind.</p>
+          <ul class="contact-links">
+            <li><a class="text-link" href="https://www.linkedin.com/in/errollvanmaramba/">LinkedIn</a></li>
+            <li><a class="text-link" href="https://www.behance.net/errollvanmaramba">Behance</a></li>
+          </ul>
         </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section class="section bg-alt" id="contact">
-        <div class="container contact-content reveal">
-            <h2>Let's build something great.</h2>
-            <p>If you're interested in collaborating, looking to elevate your brand's digital presence, or just want to chat about design and marketing, my inbox is always open.</p>
-            
-            <!-- Formspree Contact Form -->
-            <form action="https://formspree.io/f/mqeyqkpw" method="POST" class="contact-form">
-                <div class="form-group">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="yourname@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" name="message" class="form-control" placeholder="How can I help you?" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1rem;">Send Message</button>
-            </form>
-
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/errollvanmaramba/" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
-                <a href="https://www.behance.net/errollvanmaramba" target="_blank" class="btn btn-outline">Behance Portfolio</a>
+        <form class="contact-form" action="https://formspree.io/f/mqeyqkpw" method="post">
+          <div class="contact-fields">
+            <div>
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" autocomplete="name" required>
             </div>
-        </div>
+            <div>
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div>
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required></textarea>
+          </div>
+          <button class="button button-primary" type="submit">Send message</button>
+        </form>
+      </div>
     </section>
+  </main>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // 1. Mobile Menu Toggle
-            const mobileToggle = document.getElementById('mobile-toggle');
-            const navLinks = document.querySelector('.nav-links');
-            const navItems = document.querySelectorAll('.nav-link');
-
-            mobileToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('nav-active');
-                mobileToggle.classList.toggle('toggle-active');
-            });
-
-            // Close mobile menu when a link is clicked
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    navLinks.classList.remove('nav-active');
-                    mobileToggle.classList.remove('toggle-active');
-                });
-            });
-
-            // 2. Scroll Reveal Animations utilizing IntersectionObserver
-            const revealElements = document.querySelectorAll('.reveal');
-
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        // Optional: stop observing once revealed
-                        // observer.unobserve(entry.target); 
-                    }
-                });
-            }, {
-                root: null,
-                threshold: 0.15, // Trigger when 15% of the element is visible
-                rootMargin: "0px 0px -50px 0px" 
-            });
-
-            revealElements.forEach(el => revealObserver.observe(el));
-
-            // 3. Active Nav Link Highlighting on Scroll
-            const sections = document.querySelectorAll('section[id]');
-            
-            const highlightNavOnScroll = () => {
-                let scrollY = window.pageYOffset;
-
-                sections.forEach(current => {
-                    const sectionHeight = current.offsetHeight;
-                    const sectionTop = current.offsetTop - 100; // Offset for sticky header
-                    const sectionId = current.getAttribute('id');
-                    const navLink = document.querySelector(`.nav-links a[href*=${sectionId}]`);
-
-                    if (navLink) {
-                        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                            navLink.classList.add('active');
-                        } else {
-                            navLink.classList.remove('active');
-                        }
-                    }
-                });
-            };
-
-            window.addEventListener('scroll', highlightNavOnScroll);
-            
-            // Trigger once on load in case user refreshed mid-page
-            highlightNavOnScroll();
-
-            // 4. Gemini AI Matchmaker Integration
-            const generateBtn = document.getElementById('generate-pitch-btn');
-            const aiInput = document.getElementById('ai-job-input');
-            const aiResultBox = document.getElementById('ai-pitch-result');
-            const spinner = document.getElementById('ai-spinner');
-            
-            // Resume context for the LLM
-            const errollContext = `
-            Name: Erroll Van Maramba
-            Title: Marketing Designer based in Metro Manila, Philippines.
-            Experience:
-            - Freelance Marketing Designer (Nov 2025-Present): Works with Patio Productions, Starfire Direct, Harmonia Living, Artificial Turf Supply. Creates campaign-ready creatives, AI-assisted product/lifestyle imagery, SEO blog content using AI, multi-format videos (16:9, 9:16).
-            - Lake Blue Media LLC (May 2025-Nov 2025): Optimized images, managed social media, produced YouTube Shorts.
-            - Starfire Direct (Jul 2023-March 2026): Developed high-quality product media, managed Shopify, helped build SEO/SEM program growing organic traffic 2-5% MoM.
-            - MicroSourcing (Jul 2023-Jul 2024): Managed product media, optimized e-commerce listings, presented audit reports.
-            Skills: Adobe Photoshop, Illustrator, Canva, Figma, UI/UX Design, CapCut, HeyGen, Scripting & Editing, ChatGPT, Claude, Midjourney, Gemini, On-Page SEO, Originality.AI, Shopify, Pin Generator, Sociamonials.
-            Education: B.S. Marketing.
-            `;
-
-            if(generateBtn) {
-                generateBtn.addEventListener('click', async () => {
-                    const query = aiInput.value.trim();
-                    if (!query) {
-                        alert('Please enter a job description or company name first.');
-                        return;
-                    }
-
-                    // Reset UI
-                    aiResultBox.style.display = 'none';
-                    spinner.style.display = 'block';
-                    generateBtn.disabled = true;
-                    generateBtn.innerHTML = 'Analyzing...';
-
-                    // TODO: Replace this with the actual URL Cloudflare gives you for your worker!
-                    const CLOUDFLARE_WORKER_URL = "https://ai-matchmaker.erroll-maramba04.workers.dev"; 
-                    
-                    // We combine your context and the user's query into one prompt for the Worker
-                    const finalPrompt = `Here is my background context:\n${errollContext}\n\nAnalyze this job description or company and tell me why I am a great fit:\n${query}`;
-
-                    try {
-                        // Securely call your Cloudflare Worker instead of the Gemini API directly
-                        const response = await fetch(CLOUDFLARE_WORKER_URL, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ prompt: finalPrompt })
-                        });
-
-                        // Safely try to read the error details from the Worker
-                        let data;
-                        try {
-                            data = await response.json();
-                        } catch (parseError) {
-                            throw new Error(`Worker did not return JSON. It might be crashing before running the code.`);
-                        }
-
-                        // If the response wasn't a success (like a 500 error), throw the EXACT error
-                        if (!response.ok) {
-                            throw new Error(data.error || `HTTP error! status: ${response.status}`);
-                        }
-                        
-                        if (data.reply) {
-                            aiResultBox.innerHTML = `<strong>✨ AI Fit Analysis:</strong><br><br>${data.reply.replace(/\n/g, '<br>')}`;
-                            aiResultBox.style.display = 'block';
-                        } else {
-                            throw new Error('No text generated');
-                        }
-                    } catch (error) {
-                        console.error("Worker Fetch Error:", error);
-                        aiResultBox.innerHTML = `Oops, the AI is taking a quick break. Please try again in a moment.`;
-                        aiResultBox.style.display = 'block';
-                    } finally {
-                        // Restore UI
-                        spinner.style.display = 'none';
-                        generateBtn.disabled = false;
-                        generateBtn.innerHTML = '✨ Generate Fit Analysis';
-                    }
-                });
-            }
-        });
-    </script>
+  <footer class="site-footer">
+    <div class="shell footer-content">
+      <span>© Erroll Van Maramba</span>
+      <a class="text-link" href="#home">Back to top</a>
+    </div>
+  </footer>
 </body>
 </html>
-
-
-
-
-
